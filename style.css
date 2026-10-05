@@ -1,0 +1,558 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: black;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ---------- Hearts ---------- */
+#hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    color: #ff6b9d;
+    font-size: 20px;
+    opacity: 0.8;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-110vh) translateX(var(--drift)) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ---------- Screens ---------- */
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+    z-index: 1;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.birthday-message {
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.birthday-message button {
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.birthday-message i {
+    color: red;
+    margin-left: 8px;
+}
+
+.birthday-message-days {
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.birthday-message-days h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+.birthday-message-days p {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.birthday-message-days i {
+    color: red;
+}
+
+.birthday-message-final {
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.birthday-message-final h1 {
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
+}
+
+.birthday-message-final i {
+    color: red;
+}
+
+.birthday-message-final p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.screen1-img {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 12px;
+}
+
+#dayCounter {
+    color: #ff6b9d;
+    font-weight: bold;
+}
+
+#dayRemainingCounter {
+    color: #ff6b9d;
+    font-weight: bold;
+}
+
+/* ---------- Buttons ---------- */
+.click-btn,
+.back-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    border-radius: 30px;
+    background-color: #ff6b9d;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.click-btn:hover,
+.back-btn:hover {
+    background-color: #ff4d88;
+    transform: scale(1.05);
+}
+
+.back-btn i {
+    margin-left: 8px;
+}
+
+/* ---------- Wishes ---------- */
+.wishes-screen {
+    overflow-y: auto;
+    padding: 40px 20px;
+}
+
+.wishes-content {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+.wishes-content h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.wishes-content i {
+    color: red;
+}
+
+.wish-line {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    opacity: 0;
+}
+
+.wish-buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    opacity: 0;
+    visibility: hidden; /* not clickable until it appears */
+}
+
+.wishes-screen.play .wish-line {
+    animation: fadeInLine 0.9s ease forwards;
+}
+
+.wishes-screen.play .wish-line:nth-of-type(1) { animation-delay: 0.3s; }
+.wishes-screen.play .wish-line:nth-of-type(2) { animation-delay: 1.5s; }
+.wishes-screen.play .wish-line:nth-of-type(3) { animation-delay: 2.7s; }
+.wishes-screen.play .wish-line:nth-of-type(4) { animation-delay: 3.9s; }
+
+.wishes-screen.play .wish-buttons {
+    animation: fadeInButtons 0.9s ease 1.3s forwards;
+}
+
+@keyframes fadeInLine {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInButtons {
+    from { opacity: 0; visibility: visible; transform: translateY(12px); }
+    to   { opacity: 1; visibility: visible; transform: translateY(0); }
+}
+
+/* ---------- Screen 2 (counter + memory lane) ---------- */
+.multi-section {
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: auto;
+    padding: 100px 20px 60px;
+    align-items: center;
+}
+
+.counter-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.scroll-hint {
+    margin-top: 20px;
+    font-size: 1rem;
+    opacity: 0.7;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+}
+
+.memory-lane {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    max-width: 700px;
+    width: 100%;
+    padding-bottom: 120px;
+}
+
+.memory-lane h2 {
+    margin-bottom: 10px;
+}
+
+.lane-path-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 700px;
+    width: 100%;
+}
+
+.lane-path-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.polaroid {
+    position: relative;
+    z-index: 1;
+    background: white;
+    padding: 16px 16px 40px;
+    border-radius: 4px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    width: 260px;
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.polaroid.slide-left {
+    align-self: flex-start;
+    transform: translateX(-80px);
+}
+
+.polaroid.slide-left i {
+    color: red;
+}
+
+.polaroid.slide-right {
+    align-self: flex-end;
+    transform: translateX(80px);
+}
+
+.polaroid.in-view {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.polaroid:hover {
+    transform: scale(1.03);
+}
+
+.polaroid img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    border-radius: 2px;
+}
+
+.polaroid p {
+    color: #333;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 12px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Back/Next at bottom center of screen2, shown after scrolling */
+.fixed-btn {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.fixed-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.back-btn.fixed-btn {
+    transform: translateX(calc(-100% - 10px));
+}
+
+.next-btn.fixed-btn {
+    transform: translateX(10px);
+}
+
+.back-btn.fixed-btn:hover {
+    transform: translateX(calc(-100% - 10px)) scale(1.05);
+}
+
+.next-btn.fixed-btn:hover {
+    transform: translateX(10px) scale(1.05);
+}
+
+/* ---------- Music player ---------- */
+audio {
+    position: fixed;
+    bottom: 1px;
+    left: 20px;
+    z-index: 10;
+    width: 200px;
+}
+
+.music-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background-color: #ff6b9d;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1);
+}
+
+.music-toggle.playing i {
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; /* above everything, including hearts */
+    transition: opacity 0.6s ease;
+}
+
+.loading-text {
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+}
+
+.dots span {
+    animation: blink 1.4s infinite;
+    opacity: 0;
+}
+
+.dots span:nth-child(1) { animation-delay: 0s; }
+.dots span:nth-child(2) { animation-delay: 0.2s; }
+.dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+    0%, 20% { opacity: 0; }
+    40% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.loading-btn {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.loading-btn.show {
+    opacity: 1;
+}
+
+.loading-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-btn.hidden {
+    display: none;
+}
+
+.song-title {
+    position: fixed;
+    bottom: 30px;
+    left: 80px; /* adjust based on where your music button sits */
+    font-size: 0.85rem;
+    color: #ff6b9d;
+    opacity: 0.8;
+    z-index: 10;
+}
+
+/* ========== Mobile responsiveness ========== */
+@media (max-width: 600px) {
+
+    .birthday-message h1 {
+        font-size: 1.6rem;
+    }
+
+    .birthday-message p {
+        font-size: 1.1rem;
+    }
+
+    .screen1-img {
+        max-width: 180px;
+    }
+
+    .click-btn,
+    .back-btn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    /* Wishes screen */
+    .wishes-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .wish-line {
+        font-size: 1rem;
+    }
+
+    .fixed-btn {
+        bottom: 70px;
+    }
+
+    .back-btn.fixed-btn,
+    .next-btn.fixed-btn {
+        padding: 8px 14px;
+        font-size: 1.2rem;
+    }
+
+    /* Loading screen */
+    .loading-text {
+        font-size: 1.1rem;
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    /* Music player */
+    .music-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        bottom: 16px;
+        left: 16px;
+    }
+
+    .song-title {
+        left: 64px;
+        font-size: 0.9rem;
+        max-width: 80vw;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .memory-lane h2 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .birthday-message-days h1 {
+        font-size: 1.6rem;
+        transform: translateY(-80px);
+    }
+
+}
