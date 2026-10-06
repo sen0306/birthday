@@ -46,13 +46,12 @@ window.addEventListener('load', () => {
 });
 
 document.getElementById('doneBtn').addEventListener('click', () => {
-    const loadingScreen = document.getElementById('loadingScreen');
-
-    // This click is the first interaction — safe to start music now
     bgMusic.play();
+    document.getElementById('musicToggle').classList.add('playing'); // ← add this line
 
+    const loadingScreen = document.getElementById('loadingScreen');
     loadingScreen.classList.add('fade-out');
-    setTimeout(() => loadingScreen.remove(), 600); // remove from DOM after fade
+    setTimeout(() => loadingScreen.remove(), 600);
 });
 
 // ---------- Screen switching ----------
