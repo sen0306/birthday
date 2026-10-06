@@ -312,7 +312,7 @@ html, body {
     transform: translateX(-80px);
 }
 
-.polaroid.slide-left i {
+.polaroid.slide-right i {
     color: red;
 }
 
