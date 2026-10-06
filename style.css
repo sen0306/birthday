@@ -14,10 +14,6 @@ html, body {
     position: relative;
 }
 
-#screen2 {
-    overflow-x: hidden;
-}
-
 /* ---------- Hearts ---------- */
 #hearts-container {
     position: fixed;
@@ -241,6 +237,7 @@ html, body {
     flex-direction: column;
     justify-content: flex-start;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 100px 20px 60px;
     align-items: center;
 }
