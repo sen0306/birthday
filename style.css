@@ -14,6 +14,10 @@ html, body {
     position: relative;
 }
 
+#screen2 {
+    overflow-x: hidden;
+}
+
 /* ---------- Hearts ---------- */
 #hearts-container {
     position: fixed;
